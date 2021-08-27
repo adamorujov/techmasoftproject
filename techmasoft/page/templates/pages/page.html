@@ -1,0 +1,306 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ page.title }}{% endblock %}
+
+{% block content %}
+
+<!--=================== main start ====================-->
+
+<main>
+
+<!-- services start -->
+
+{% if services %}
+<section class="services" id="services">
+    <div class="container">
+        <div class="section_title">
+            <h2>XİDMƏTLƏRİMİZ</h2>
+        </div>
+        <div class="swiper mySwiper-1">
+            <div class="swiper-wrapper">
+                {% for service in services %}
+                <div class="card_{{ service.id }} card swiper-slide">
+                    <img src="{{ service.image.url }}" alt="{{ service.title }}">
+                    <h4>{{ service.title }}</h4>
+                    <p class="card_content">
+                        {{ service.content|safe }}
+                    </p>
+                    <a href="#form" class="btn">Sifariş Et</a>
+                </div>
+                {% empty %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- services section end -->
+
+<!-- features section start -->
+
+{% if properties %}
+<section class="features" id="features">
+    <div class="container">
+        <div class="addition_title">
+            <h2>Sizə təklif etdiyimiz saytın xüsusiyyətləri</h2>
+        </div>
+        <div class="features_contents">
+            {% for property in properties %}
+            <div class="features_content_{{ property.id }} features_content">
+                <div class="features_head_{{ property.id }}">
+                    <i class="fas fa-check"></i>
+                    <h4>{{ property.title }}</h4>
+                </div>
+                <p>
+                    {{ property.content|safe }}
+                </p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- features section end -->
+
+<!-- works section start -->
+
+{% if works %}
+<section class="work" id="work">
+    <div class="container">
+        <div class="section_title">
+            <h2>İŞLƏRİMİZ</h2>
+        </div>
+        <div class="work_cards">
+            <div class="swiper mySwiper-2">
+                <div class="swiper-wrapper">
+                    {% for work in works %}
+                    <div class="card_{{ work.id }} card swiper-slide">
+                        <img src="{{ work.image.url }}" alt="{{ work.title }}">
+                        <div class="card_content">
+                            <a href="{{ work.site_url }}" target="_blank">
+                                <h4>{{ work.title }}</h4>
+                            </a>
+                            <p class="description">
+                                {{ work.content|safe }}
+                            </p>
+                        </div>
+                    </div>
+                    {% endfor%}
+                </div>
+                <div class="slider_btns">
+                    <div class="prev_btn">
+                        <i class="fas fa-angle-left"></i>
+                    </div>
+                    <div class="next_btn">
+                        <i class="fas fa-angle-right"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- works section end -->
+
+<!-- offers section start -->
+
+{% if suggestions %}
+<section class="offers" id="offers">
+    <div class="container">
+        <div class="section_title">
+            <h2>TƏKLİFLƏRİMİZ</h2>
+        </div>
+        {% if page.suggestion_description %}
+        <div class="offers_description">
+            <p>
+               {{ page.suggestion_description|safe }}
+            </p>
+        </div>
+        {% endif %}
+        <div class="offers_contents">
+            {% for suggestion in suggestions %}
+            {% if suggestion.suggestion_direction == 'L' %}
+            <div class="offers_{{ suggestion.id }} offer">
+                <div class="offers_{{ suggestion.id }}_img offers_img">
+                    <img src="{{ suggestion.image.url }}" alt="{{ suggestion.title }}">
+                </div>
+                <div class="offers_{{ suggestion.id }}_content offers_content">
+                    <h3>{{ suggestion.title }}</h3>
+                    <p>{{ suggestion.content|safe }}</p>
+                </div>
+            </div>
+            {% else %}
+            <div class="offers_{{ suggestion.id }} offer">
+                <div class="offers_{{ suggestion.id }}_content offers_content">
+                    <h3>{{ suggestion.title }}</h3>
+                    <p>{{ suggestion.content|safe }}</p>
+                </div>
+                <div class="offers_{{ suggestion.id }}_img offers_img">
+                    <img src="{{ suggestion.image.url }}" alt="{{ suggestion.title}}">
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- offers section end -->
+
+<!-- purpose section start -->
+
+{% if purposes %}
+<section class="purpose" id="purpose">
+    <div class="container">
+        <div class="addition_title">
+            <h2>MƏQSƏDLƏRİMİZ</h2>
+        </div>
+        <div class="purpose_cards">
+            {% for purpose in purposes %}
+            <div class="card card_{{ purpose.id }}">
+                <div class="icon">
+                    <img src="{{ purpose.image.url }}" alt="{{ purpose.title }}">
+                </div>
+                <h4>{{ purpose.title }}</h4>
+                <p>{{ purpose.content|safe }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- purpose section end -->
+
+<!-- form section start -->
+<section class="form" id="form">
+    <div class="container">
+        <div class="section_title">
+            <h2>BİZİMLƏ ƏLAQƏ</h2>
+        </div>
+        <div class="form_content">
+            <form name="myForm" method="POST" onsubmit="return validateInput()" novalidate>
+                {% csrf_token %}
+                <div class="fields_1">
+                    <div class="field name">
+                        <input type="text" name="first_name" id="name" placeholder="Adınız">
+                        <small id="nameerror">Error Message</small>
+                    </div>
+                    <div class="field surname">
+                        <input type="text" name="last_name" id="surname" placeholder="Soyadınız">
+                        <small id="surnameerror">Error Message</small>
+                    </div>
+                </div>
+                <div class="field email">
+                    <input type="email" name="email" id="email" placeholder=" E-mailiniz">
+                    <small id="emailerror">Error Message</small>
+                </div>
+                <div class="fields_2">
+                    <div class="country_code">
+                        <select name="num" id="num">
+                            <option value="+994">+994</option>
+                        </select>
+                    </div>
+                    <div class="field number">
+                        <input type="tel" name="phone_number" id="number" placeholder="Telefon" >
+                        <small id="numbererror">Error Message</small>
+                    </div>
+                </div>
+                <div class="field textarea">
+                    <textarea cols="30" rows="10" name="message" id="message" placeholder="Mesajınızı yazın"></textarea>
+                    <small id="messageerror">Error Message</small>
+                </div>
+                <input class="button" type="submit" value="Göndərin">
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- form section end -->
+
+<!-- Team section start -->
+
+{% if team_members %}
+<section class="team" id="team">
+    <div class="container">
+        <div class="addition_title">
+            <h2>KOMANDAMIZ</h2>
+        </div>
+        <div class="team_cards">
+            {% for member in team_members %}
+            <div class="card_{{ member.id }} card_center card">
+                <img src="{{ member.image.url }}" alt="{{ member.first_name }} {{ member.last_name }}">
+                <div>
+                    <p class="user_name">{{ member.first_name }} {{ member.last_name }}</p>
+                    <p class="skill">{{ member.branch_title }}</p>
+                </div>
+                <div class="arr_container card_center ">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <div class="left_container off">
+                    {% if member.skills.all %}
+                    <p>Bacarıqlar</p>
+                    <div class="skills">
+                        {% for skill in member.skills.all %}
+                        <div>{{ skill.title }}</div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    {% if member.accounts.all %}
+                    <div class="icons">
+                        {% for account in member.accounts.all %}
+                        <i class="fab fa-{{ account.social_media }}"></i>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    <div class="cancel card_center">
+                        <i class="fas fa-times"></i>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- Team section end -->
+
+<!-- brands section start -->
+
+{% if companies %}
+<section class="brands" id="brands">
+    <div class="container">
+        <div class="addition_title">
+            <h2>BİZİMLƏ İŞLƏYƏN ŞİRKƏTLƏR</h2>
+        </div>
+        {% if page.companies_description %}
+        <div class="brands_description">
+            <p>{{ page.companies_description|safe }}</p>
+        </div>
+        {% endif %}
+        <div class="brands_cards">
+            <div class="swiper mySwiper-3">
+                <div class="swiper-wrapper">
+                    {% for company in companies %}
+                    <div class="card_{{ company.id }} card swiper-slide">
+                        <img src="{{ company.logo.url }}" alt="{{ company.name }}" title="{{ company.name }}">
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+</section>
+{% endif %}
+
+<!-- brands section end -->
+
+</main>
+
+<!--=================== main end ====================-->
+
+{% endblock %}

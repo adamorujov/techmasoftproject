@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='icon' href='{{ page.favicon.url }}'>
+    <title>Mesajınız göndərildi</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <div class="container">
+        {% if messages %}
+        <div class="send_message">
+            {% for message in messages %}
+            <p>
+                {{ message }}
+            </p>
+            {% endfor %}
+            <div class="message_gif">
+                <lottie-player class="lottie" src="https://assets1.lottiefiles.com/packages/lf20_cmf6a3.json" background="transparent"
+                    speed="1" style="max-width: 300px; max-height: 300px;" loop autoplay>
+                </lottie-player>
+            </div>
+            <div class="send_btn">
+                <a class="msgsbutton" href="{% url 'homepage' %}">Əsas Səhifəyə geri dön</a>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+</body>
+
+</html>

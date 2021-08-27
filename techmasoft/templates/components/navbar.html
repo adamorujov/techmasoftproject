@@ -1,0 +1,73 @@
+<header>
+    <!-- navbar start -->
+    <nav class="navbar">
+        <div class="container wrapper">
+            <div class="logo_box">
+                <a href="{% url 'homepage' %}"><img src="{{ page.logo.url }}" alt="Techmasoft logo"></a>
+            </div>
+            <div class="menu">
+                <div class="mobile_nav">
+                    <div class="mobile_logo">
+                        <a href="{% url 'homepage' %}"><img src="{{ page.logo.url }}" alt="Techmasoft logo"></a>
+                    </div>
+                    <div class="menu_close">
+                        <i class="fas fa-times"></i>
+                    </div>
+                </div>
+                <ul class="nav_list">
+                    <li class="nav_link">
+                        <a href="{% url 'homepage' %}" class="nav_item text_capitalize text_uppercase"><i class="fas fa-home"></i> ƏSAS SƏHİFƏ</a>
+                    </li>
+                    <li class="nav_link">
+                        <a href="#services" class="nav_item text_capitalize"><i class="fas fa-sliders-h"></i> XİDMƏTLƏRİMİZ</a>
+                    </li>
+                    {% if works %}
+                    <li class="nav_link">
+                        <a href="#work" class="nav_item text_capitalize"><i class="fas fa-briefcase"></i> İŞLƏRİMİZ</a>
+                    </li>
+                    {% endif %}
+                    <li class="nav_link">
+                        <a href="#offers" class="nav_item text_capitalize"><i class="fas fa-envelope-open-text"></i> TƏKLİFLƏRİMİZ</a>
+                    </li>
+                    <li class="nav_link">
+                        <a href="#form" class="nav_item text_capitalize"><i class="fas fa-id-card"></i> BİZİMLƏ ƏLAQƏ</a>
+                    </li>
+                    {% if request.user.is_staff %}
+                    <li class="nav_link admin">
+                        <a href="http://127.0.0.1:8000/techad1000/" target='_blank' class="nav_item text_capitalize"><i class="fas fa-user"></i> ADMİN</a>
+                    </li>
+                    <li class="nav_link envelope">
+                        {% if contact_messages %}
+                        <a href="{% url 'messages' %}" class="nav_item text_capitalize">
+                            <i class="fas fa-envelope"></i>
+                            <span>{{ contact_messages_length }}</span>
+                        </a>
+                        {% else %}
+                        <a href="{% url 'messages' %}" class="nav_item text_capitalize">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        {% endif %}
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+            <div class="menu_bars">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+    <!-- navbar end -->
+
+    <!-- banner start -->
+    <div class="banner">
+        <div class="container">
+            <div class="content">
+                <h1>{{ page.banner_title }}</h1>
+                <p>{{ page.banner_description|safe }}</p>
+                <a href="#form" class="btn">Müraciət edin <i class="fas fa-long-arrow-alt-right"></i></a>
+            </div>
+        </div>
+    </div>
+    <!-- banner end -->
+</header>
+<!--=================== header end ====================-->

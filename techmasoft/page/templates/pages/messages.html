@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='icon' href='{{ page.favicon.url }}'>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <title>Mesajlar | Techmasoft</title>
+    <style>
+        .archive, .delete{
+            float: right;
+            display: inline;
+            margin-right : 1rem;
+        }
+        .archivebtn{
+            background: none;
+            border: none;
+            color: black;
+            cursor: pointer;
+            margin-top: .4rem;
+        }
+        .fa-archive, .fa-trash-alt{
+            font-size: 150%;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <div class="messages">
+            {% if not new_messages and not old_messages %}
+            <div class="messages_title">
+                <h2>MESAJ YOXDUR</h2>
+            </div>
+            {% endif %}
+            {% if new_messages %}
+            <div class="messages_title">
+                <h2>YENİ MESAJLAR ({{ new_messages|length }})</h2>
+            </div>
+            <form class="messagesform" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="choice" value="archive">
+                <button class="msgsbutton" type="submit">Mesajları oxunmuş kimi işarələ</button>
+            </form>
+            <div class="cards">
+                {% for message in new_messages %}
+                <div class="card_{{ message.id }} card">
+                    <div class="card_title card_title_{{ message.id }}">
+                        {{ message.first_name }} {{ message.last_name }}
+                        <div class="archive">
+                            <a href="{% url 'archive' message.id %}" class="archivebtn" title="Mesajı oxunmuş kimi işarələ"><i class="fas fa-archive"></i></a>
+                        </div>
+                    </div>
+                    <div class="card_content_{{ message.id }} card_content">
+                        <p class="email">
+                            {{ message.email }} ({{ message.country_code }}){{ message.telephone_number }}
+                        </p>
+                        <p class="msj">
+                            {{ message.message }}
+                        </p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+            {% if old_messages %}
+            <div class="messages_title">
+                <h2>ƏVVƏLKİ MESAJLAR ({{ old_messages|length }})</h2>
+            </div>
+            <form class="messagesform" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="choice" value="delete">
+                <button class="msgsbutton" type="submit">Əvvəlki mesajları sil</button>
+            </form>
+            <div class="cards">
+                {% for message in old_messages %}
+                <div class="card_{{ message.id }} card">
+                    <div class="card_title card_title_{{ message.id }}">
+                        {{ message.first_name }} {{ message.last_name }}
+                        <div class="delete">
+                            <a href="{% url 'delete' message.id %}" class="archivebtn" title="Mesajı oxunmuş kimi işarələ"><i class="fas fa-trash-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="card_content_{{ message.id }} card_content">
+                        <p class="email">
+                            {{ message.email }} +994{{ message.telephone_number }}
+                        </p>
+                        <p class="msj">
+                            {{ message.message }}
+                        </p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+        
+    </div>
+</body>
+</html>

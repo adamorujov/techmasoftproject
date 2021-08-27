@@ -1,0 +1,70 @@
+<footer>
+    <div class="footer">
+        <div class="container">
+            {% if page.slogan %}
+            <div class="footer_description">
+                <p>
+                    {{ page.slogan|safe }}
+                </p>
+            </div>
+            {% endif %}
+            <div class="footer_parts">
+                <div class="footer_part_1 footer_part">
+                    <h2>Bizimlə Əlaqə</h2>
+                    <ul>
+                        {% if page.admin_phone_number %}
+                        <li><i class="fas fa-phone-alt"></i> <a href="tel:{{ page.admin_phone_number }}">{{ page.admin_phone_number }}</a></li>
+                        {% endif %}
+                        {% if page.admin_whatsapp_number %}
+                        <li><i class="fab fa-whatsapp"></i> <a href="https://wa.me/{{ page.admin_whatsapp_number }}" target="_blank">{{ page.admin_whatsapp_number }}</a></li>
+                        {% endif %}
+                        {% if page.corporative_email %}
+                        <li><i class="fas fa-envelope-open-text"></i> <a href="" target="_blank">{{ page.corporative_email }}</a></li>
+                        {% endif %}
+                    </ul>
+                    {% if page.page_accounts %}
+                    <div class="footer_links">
+                        {% for account in page_accounts %}
+                        <div class="footer_link">
+                            <a href="{{ account.account_link }}" target="_blank"><i class="fab fa-{{ account.social_media }}"></i></a>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+                {% if services %}
+                <div class="footer_part_2 footer_part">
+                    <h2>Xidmətlərimiz</h2>
+                    <ul>
+                        {% for service in services %}
+                        <li><a href="#services">{{ service.title }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+                <div class="footer_part_3 footer_part">
+                    <h2>Yararlı Linklər</h2>
+                    <ul>
+                        <li><a href="{% url 'homepage' %">Əsas Səhifə</a></li>
+                        <li><a href="#services">Xidmətlərimiz</a></li>
+                        <li><a href="#work">İşlərimiz</a></li>
+                        <li><a href="#offers">Təkliflərimiz</a></li>
+                        <li><a href="#form">Bizimlə Əlaqə</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <hr style="width:85%; margin:auto;">
+
+    <!-- copyright start -->
+    <div class="copyright">
+        <div class="container">
+            <p>
+                <span>&#169;</span> 2021 | <a href="{% url 'homepage' %}">Techmasoft</a> tərəfindən yaradıldı . Bütün hüquqlar qorunur
+            </p>
+        </div>
+    </div>
+    <!-- copyright end -->
+</footer>

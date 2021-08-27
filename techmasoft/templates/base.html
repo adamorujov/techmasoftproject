@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sürətli, müasir və təhlükəsiz veb saytların biznesinizə uyğun şəkildə ən peşəkar üsulla hazırlanması həyata keçirilir.">
+    <meta name="keywords" content="Web, Veb, Website, Vebsayt, Site, Sayt, Veb dizayn, Sayt dizayn, Sayt yaratmaq, Vebsayt yaratmaq, Müasir veb dizayn, Sayt hazırlamaq, Bloq, E-ticarət, domen, hostinq, texnologiya, proqramlaşdırma, veb proqramlaşdırma">
+    <meta name="author" content="Techmasoft">
+    <title>
+        {% if request.user.is_staff %}
+        {% if contact_messages %}
+        ({{ contact_messages_length }})
+        {% endif %}
+        {% endif %}
+        {% block title %}{% endblock %}</title>
+    <!-- fontawesome CSS link -->
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel='icon' href='{{ page.favicon.url }}'>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <!-- swiper CSS link -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <script>
+        window.addEventListener("load",function(){
+            document.querySelector(".page_loader").style.display="none";
+        })
+    </script>
+    <style>
+        /*.services .container .swiper-wrapper .card img{
+            border-top-left-radius: .6rem;
+            border-top-right-radius: .6rem;
+            width: 100%;
+            height: 100%;
+        }*/
+    </style>
+</head>
+
+<body>
+    <div class="page_loader"></div>
+
+    <div class="scroll_up_btn">
+        <i class="fa fa-angle-up"></i>
+    </div>
+
+    <div class="whatsapp_icon">
+        <a href="https://wa.me/{{ page.admin_whatsapp_number }}" class="whatsapp_float" target="_blank">
+            <i class="fab fa-whatsapp whatsapp-icon"></i>
+        </a>
+    </div>
+    <!--=================== header start ====================-->
+
+    {% include 'components/navbar.html' %}
+
+    {% block content %} {% endblock %}
+
+    {% include 'components/footer.html' %}
+
+
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+
+</html>
+
+
