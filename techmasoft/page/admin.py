@@ -26,12 +26,12 @@ class PageAdmin(admin.ModelAdmin):
         ),
         (
             'Banner elementləri', {
-                'fields' : ('banner_title', 'banner_description', 'banner_image')
+                'fields' : ('banner_title', 'banner_description')
             },
         ),
         (
             'Digər məlumatlar', {
-                'fields' : ('suggestion_description', 'companies_description', 'contact_image')
+                'fields' : ('suggestion_description', 'companies_description')
             },
         ),
         (

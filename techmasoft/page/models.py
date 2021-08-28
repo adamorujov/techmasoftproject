@@ -1,5 +1,4 @@
 from django.db import models
-from django.core.exceptions import ValidationError
 from django.shortcuts import redirect
 
 class PageModel(models.Model):
@@ -9,10 +8,8 @@ class PageModel(models.Model):
     slogan = models.CharField(max_length=250, verbose_name='Sloqan', blank=True, null=True)
     banner_title = models.CharField(max_length=250, verbose_name='Banner başlığı')
     banner_description = models.TextField(verbose_name='Banner mətni')
-    banner_image = models.ImageField(upload_to='images/', verbose_name='Banner şəkli')
     suggestion_description = models.TextField(verbose_name='Təklif bölməsi izahı', blank=True, null=True)
     companies_description = models.TextField(verbose_name='Şirkətlər bölməsi izahı', blank=True, null=True)
-    contact_image=models.ImageField(upload_to='images/', verbose_name='Form şəkli')
     admin_phone_number = models.CharField(max_length=25, blank=True, null=True, verbose_name='Telefon nömrəsi')
     admin_whatsapp_number = models.CharField(max_length=25, blank=True, null=True, verbose_name='Whatsapp nömrəsi')
     corporative_email = models.EmailField(max_length=100, verbose_name='Korporativ email', blank=True, null=True)

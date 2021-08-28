@@ -87,3 +87,51 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = (
     os.path.join(BASE_DIR, 'media')
 )
+
+
+
+LOGGING = {
+    'version' : 1,
+    'disable_existing_loggers' : False,
+    'formatters': {
+        'basit_ifade' : {
+            'format' : '{asctime} {levelname} {message} {name}',
+            'style' : '{',
+        }
+    },
+    'handlers' : {
+        'console' : {
+            'class' : 'logging.StreamHandler',
+        },
+        'logfile' : {
+            'level' : 'INFO',
+            'class' : 'logging.FileHandler',
+            'filename' : 'logs/konu_okuma.log',
+            'formatter' : 'basit_ifade',
+        },
+    },
+    'loggers' : {
+        'django': {
+            'handlers': ['logfile'],
+            'propagate': True,
+        },
+        'django.request': {
+            'handlers': ['logfile'],
+            'level': 'ERROR',
+            'propagate': False,
+        },
+    },
+}
+
+
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
+
+sentry_sdk.init(
+    dsn=env('SENTRY_DSN'),
+    integrations=[DjangoIntegration()],
+
+    traces_sample_rate=1.0,
+
+    send_default_pii=True
+)

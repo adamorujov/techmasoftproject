@@ -4,6 +4,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from page.models import PageModel, ServiceModel, PropertyModel, WorkModel, SuggestionModel, PurposeModel, ContactModel, TeamModel, CompanyModel, PageAccountsModel
 
+
 class PageView(View):
 
     def get(self, request):
@@ -74,7 +75,6 @@ class MessagesListView(LoginRequiredMixin, View):
         new_messages = ContactModel.objects.order_by('-id').filter(is_new=True)
         old_messages = ContactModel.objects.order_by('-id').filter(is_new=False)
         choice = request.POST.get('choice')
-        print(choice)
 
         if choice == 'archive':
             new_messages.update(is_new=False)
