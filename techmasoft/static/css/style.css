@@ -724,6 +724,9 @@ form .button{
     cursor: pointer;
     outline: none;
 }
+form .button:focus{
+    outline: none;
+}
 .field.success input,
 .field.success #message{
     border:2px solid #0f0;
