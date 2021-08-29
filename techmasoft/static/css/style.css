@@ -13,9 +13,10 @@ body{
     font-family: 'Poppins', sans-serif;
     overflow-x: hidden;
 }
-input[type="button"]:focus{
-    outline : 0 !important;
-}
+input[type="button"] {
+    outline: none !important;
+    box-shadow: none !important;
+} 
 li{
     list-style-type: none;
 }
