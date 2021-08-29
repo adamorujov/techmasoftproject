@@ -253,7 +253,7 @@
                     {% if member.accounts.all %}
                     <div class="icons">
                         {% for account in member.accounts.all %}
-                        <i class="fab fa-{{ account.social_media }}"></i>
+                        <a href="{{ account.account_link }}" target="_blank"><i class="fab fa-{{ account.social_media }}"></i></a>
                         {% endfor %}
                     </div>
                     {% endif %}

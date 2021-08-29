@@ -67,6 +67,9 @@
                 {% endfor %}
             </div>
             {% endif %}
+            <div class="send_btn">
+                <a class="msgsbutton" href="{% url 'homepage' %}">Əsas səhifəyə geri dön</a>
+            </div>
             {% if old_messages %}
             <div class="messages_title">
                 <h2>ƏVVƏLKİ MESAJLAR ({{ old_messages|length }})</h2>
@@ -98,7 +101,6 @@
             </div>
             {% endif %}
         </div>
-        
     </div>
 </body>
 </html>

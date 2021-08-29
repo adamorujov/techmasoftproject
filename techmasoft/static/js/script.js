@@ -35,8 +35,6 @@ scrollUpBtn.addEventListener("click",function(){
     })
 })
 
-
-
 const swiper1 = new Swiper(".mySwiper-1", {
     autoplay: {
         delay: 3500,
