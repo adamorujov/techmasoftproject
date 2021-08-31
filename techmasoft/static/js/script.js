@@ -15,6 +15,15 @@ menuClose.addEventListener("click",function(){
     menu.classList.remove("show")
 })
 
+window.addEventListener("load",function(){
+    document.querySelector(".page_loader").style.display="none";
+})
+window.addEventListener("mouseup",function(e){
+    if(e.target != menu){
+        menu.classList.add("hide")
+    }
+})
+
 window.addEventListener("scroll",function(){
     if(this.scrollY>50){
         nav.classList.add("shadow")
