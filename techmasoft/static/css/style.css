@@ -171,6 +171,12 @@ header{
 .menu .nav_list .nav_link:not(:last-child){
     margin-right: 1.8rem;
 }
+.logo_box a img{
+    width: 21.8rem;
+}
+.mobile_nav .mobile_logo a img{
+    width: 21.8rem;
+}
 /* navbar end */
 
 /* banner start */
@@ -336,9 +342,6 @@ header{
     }
     header{
         background: none;
-    }
-    .logo_box a img{
-        width: 18rem;
     }
     .mobile_nav .mobile_logo a img{
         width: 18rem;
