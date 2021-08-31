@@ -4,7 +4,7 @@ from sentry_sdk.integrations.django import DjangoIntegration
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['techmasoft.com', '127.0.0.1', '3.67.187.104']
+ALLOWED_HOSTS = ['techmasoft.com', '3.67.187.104']
 
 # Database
 
