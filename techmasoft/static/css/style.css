@@ -172,10 +172,10 @@ header{
     margin-right: 1.8rem;
 }
 .logo_box a img{
-    width: 18rem;
+    width: 20rem;
 }
 .mobile_nav .mobile_logo a img{
-    width: 18rem;
+    width: 20rem;
 }
 /* navbar end */
 
@@ -355,6 +355,12 @@ header{
     }
     .page_loader{
         background-size: 50%;
+    }
+    .logo_box a img{
+        width: 18rem;
+    }
+    .mobile_nav .mobile_logo a img{
+        width: 18rem;
     }
 }
 @media screen and (max-width: 576px){
