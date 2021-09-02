@@ -9,15 +9,15 @@ class PageView(View):
 
     def get(self, request):
         page = PageModel.objects.first()
-        services = ServiceModel.objects.all()
-        properties = PropertyModel.objects.all()
+        services = ServiceModel.objects.order_by('id')
+        properties = PropertyModel.objects.order_by('id')
         works = WorkModel.objects.order_by('-id')
-        suggestions = SuggestionModel.objects.all()
-        purposes = PurposeModel.objects.all()
-        team_members = TeamModel.objects.all()
+        suggestions = SuggestionModel.objects.order_by('id')
+        purposes = PurposeModel.objects.order_by('id')
+        team_members = TeamModel.objects.order_by('id')
         companies = CompanyModel.objects.order_by('-id')
         contact_messages = ContactModel.objects.filter(is_new=True)
-        page_accounts = PageAccountsModel.objects.all()
+        page_accounts = PageAccountsModel.objects.order_by('id')
 
         context = {
             'page' : page,
