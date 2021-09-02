@@ -123,22 +123,22 @@
         <div class="offers_contents">
             {% for suggestion in suggestions %}
             {% if suggestion.suggestion_direction == 'L' %}
-            <div class="offers_{{ suggestion.id }} offer">
-                <div class="offers_{{ suggestion.id }}_img offers_img">
+            <div class="offers_1 offer">
+                <div class="offers_1_img offers_img">
                     <img src="{{ suggestion.image.url }}" alt="{{ suggestion.title }}">
                 </div>
-                <div class="offers_{{ suggestion.id }}_content offers_content">
+                <div class="offers_1_content offers_content">
                     <h3>{{ suggestion.title }}</h3>
                     <p>{{ suggestion.content|safe }}</p>
                 </div>
             </div>
             {% else %}
-            <div class="offers_{{ suggestion.id }} offer">
-                <div class="offers_{{ suggestion.id }}_content offers_content">
+            <div class="offers_2 offer">
+                <div class="offers_2_content offers_content">
                     <h3>{{ suggestion.title }}</h3>
                     <p>{{ suggestion.content|safe }}</p>
                 </div>
-                <div class="offers_{{ suggestion.id }}_img offers_img">
+                <div class="offers_2_img offers_img">
                     <img src="{{ suggestion.image.url }}" alt="{{ suggestion.title}}">
                 </div>
             </div>
