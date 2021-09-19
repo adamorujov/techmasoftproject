@@ -75,7 +75,7 @@ img{
 	text-align:center;
     font-size: 3rem;
 	box-shadow: .2rem .2rem .3rem #999;
-    z-index:100;
+    z-index:9999;
 }
 
 .whatsapp-icon {
@@ -83,13 +83,24 @@ img{
 }
 
 header{
-    background: url(images/banner.png);
-    background-size: 100%;
+    background: url(images/ngo-website-development.jpg);
+    background-size: cover;
     background-repeat: no-repeat;
-    background-position: right;
+    background-position: center;
+    position: relative;
+    z-index: 999;
     width: 100%;
     height: 100vh;
-    background-color: #809faf !important;
+}
+header::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-color: rgba(0,0,0,0.6);
 }
 .navbar{
     width: 100%;
@@ -127,7 +138,7 @@ header{
 .menu .nav_list .nav_link .nav_item i.fa-envelope{
     display: inline-block;
     font-size: 1.8rem;
-    color: #809faf;
+    color: #272848;
 }
 .menu .nav_list .envelope,
 .menu .nav_list .admin{
@@ -154,7 +165,7 @@ header{
     content: "";
     bottom: 0;
     left: 0;
-    background-color: #809faf;
+    background-color: #272848;
     width: 100%;
     height: .4rem;
     border-radius: .4rem;
@@ -181,29 +192,40 @@ header{
 
 /* banner start */
 .banner{
-    display: flex;
-    align-items: center;
     height: 100%;
+    position: relative;
+    color: #fff;
+    text-align: center;
 }
 .banner .container .content{
-    width: 40%;
-    margin-left: 2rem;
-    margin-top: 5rem;
-    z-index: 10;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
 }
 .banner .container .content h1{
     font-size: 4rem;
 }
 .banner .container .content p{
     margin-top: 2rem;
+    font-size: 1.8rem;
 }
 .banner .container .content .btn{
     display: inline-block;
-    background-color: #000;
-    color: #fff;
+    background: none;
+    color: #000;
     padding: 1rem 3.5rem 1rem 2rem;
     margin-top: 2.5rem;
     position: relative;
+    font-weight: 700;
+    border: .2rem solid #fff;
+    color: #fff;
+    transition: all .5s ease-in-out;
+}
+.banner .container .content .btn:hover{
+    background-color: #fff;
+    color: #000;
 }
 .banner .container .content .btn i{
     margin-left: 1rem;
@@ -229,24 +251,15 @@ header{
         max-width: 110rem;
         padding: 0 3rem;
     }
-    header{
-        background-size: 102%;
-    }
 }
 @media screen and (max-width: 992px){
-    .banner .container .content{
-        width: 45%;
-    }
-    header{
-        background-size: 110%;
-        background-position: center;
-    }
     .menu .nav_list{
         flex-direction: column;
         align-items: flex-start;
+        background-color: #272848;
     }
     .menu .nav_list .nav_link .nav_item{
-        color: #000;
+        color: #fff;
         padding: 2rem 4rem;
         font-size: 1.8rem;
         border-left: .5rem solid transparent;
@@ -256,7 +269,10 @@ header{
         display: inline-block;
         font-size: 2rem;
         margin-right: .5rem;
-        color: #809faf;
+        color: #e6eff1;
+    }
+    .menu .nav_list .nav_link .nav_item i.fa-envelope{
+        color: #e6eff1
     }
     .menu .nav_list .nav_link{
         width: 100%;
@@ -265,7 +281,7 @@ header{
         display: none;
     }
     .menu .nav_list .nav_link .nav_item:hover{
-        border-left: .5rem solid #809faf;
+        border-left: .5rem solid #fff;
     }
     .menu{
         position: absolute;
@@ -285,7 +301,7 @@ header{
     }
     .menu_close{
         display: block;
-        font-size: 3rem;
+        font-size: 2.3rem;
         cursor: pointer;
         padding: 2rem;
     }
@@ -340,36 +356,17 @@ header{
     .container{
         max-width: 70rem;
     }
-    header{
-        background: none;
-    }
     .mobile_nav .mobile_logo a img{
         width: 18rem;
-    }
-    .banner .container .content{
-        width: 90%;
-        text-align: left;
     }
     .menu_close{
         padding: 1.3rem !important;
-    }
-    .page_loader{
-        background-size: 50%;
-    }
-    .logo_box a img{
-        width: 18rem;
-    }
-    .mobile_nav .mobile_logo a img{
-        width: 18rem;
+        font-size: 3.2rem;
     }
 }
 @media screen and (max-width: 576px){
     .container{
         max-width: 57rem;
-    }
-    .banner .container .content{
-        width: 80%;
-        
     }
     .banner .container .content h1{
         font-size: 2.8rem;
@@ -453,7 +450,8 @@ section .container .section_title h2::after{
     width: 10rem;
 }
 .services .container .swiper-wrapper .card .btn:hover{
-    background-color: #809faf; 
+    background-color: #272848; 
+    color: #fff;
 }
 /* services section end */
 
@@ -483,7 +481,7 @@ section .addition_title{
 }
 .features .container .features_content i{
     margin-right: 1rem;
-    color: #809faf;
+    color: #272848;
 }
 /* features section end */
 
@@ -519,7 +517,7 @@ section .addition_title{
     position: absolute;
     top: 0;
     left: -100%;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(27, 28, 48, 0.9);
     width: 100%;
     height: 98%;
     color: #fff;
@@ -665,12 +663,18 @@ section .addition_title{
 /* form section start */
 /* form section start */
 .form{
-    background: url(images/Form_img\ .png);
+    background: url(images/photo_2021-09-19_15-25-01.jpg);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     padding-bottom: 4rem;
-    background-color: #809faf !important;
+    background-color: #272848 !important;
+}
+.form .section_title h2{
+    color: #fff !important;
+}
+.form .section_title h2::after{
+    background-color: #fff !important;
 }
 .form .form_content{
     display: flex;
@@ -842,7 +846,7 @@ form .button:focus{
 }
 .team .team_cards .card .left_container{
     position: absolute;
-    background: #809faf;
+    background: #272848;
     width: 100%;
     height: 100%;
     border-radius: 23px;
@@ -923,10 +927,8 @@ form .button:focus{
 
 /*========== footer start =============*/
 .footer{
-    background: url(images/footer-bg.png);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-color: #272848;
+    color: #fff;
     padding-bottom: 3rem;
     padding-top: 5rem;
 }
@@ -952,7 +954,7 @@ form .button:focus{
     height: 35px;
     line-height: 35px;
     border-radius: 50%;
-    color: #555;
+    color: #000;
     text-align: center;
     font-size: 15px;
     transition: all .5s ease-in-out;
@@ -972,16 +974,21 @@ form .button:focus{
     margin-bottom: 1rem;
 }
 .footer_parts .footer_part_1 ul li a{
-    color: #555;
+    color: #f1f1f1;
     font-weight: 500;
     transition: all .5s ease-in-out;
 }
 .footer_parts :not(.footer_part_1) ul li a {
-    color: #555;
+    color: #f1f1f1;
     font-weight: 500;
     transition: all .5s ease-in-out;
     display:block;
     text-align:center;
+}
+.footer_part ul li a{
+    color: #f1f1f1;
+    font-weight: 500;
+    transition: all .5s ease-in-out;
 }
 .footer_part ul li a:hover{
     color: #14A2F9;
@@ -989,7 +996,7 @@ form .button:focus{
 .footer_part_1 ul li i{
     display: inline-block;
     margin-right: 1rem;
-    color: #555;
+    color: #f1f1f1;
 }
 /* footer responsive start */
 @media screen and (max-width:768px){
@@ -1013,7 +1020,7 @@ form .button:focus{
     text-align: center;
 }
 .copyright .container p a{
-    color: #809faf;
+    color: #272848;
     font-weight: 500;
     transition: all .5s ease-in-out;
 }
@@ -1035,17 +1042,17 @@ form .button:focus{
 .send_message p{
     margin-bottom: 3rem;
     font-weight: 500;
-    background-color: #25d366;
-    box-shadow: 0 1px 2px #1b1b1b;
+    text-align: center;
     padding: 1rem;
-    color: #FFF;
+    font-size: 2rem;
 }
 .send_message .send_btn{
     margin-top: 3rem;
 }
-.send_message .send_btn button{
+.send_message .send_btn a{
     padding: 1rem;
     background-color: #fff;
+    color: #000;
     box-shadow: 0 1px 2px #1b1b1b;
     border: none;
     border-radius: 2rem;
@@ -1053,8 +1060,9 @@ form .button:focus{
     transition: all .5s ease-in-out;
     cursor: pointer;
 }
-.send_message .send_btn button:hover{
-    background-color: #809faf;
+.send_message .send_btn a:hover{
+    background-color: #272848;
+    color: #fff;
 }
 
 /* send message end */
@@ -1085,12 +1093,13 @@ form .button:focus{
     border-radius: .6rem;
 }
 .messages .cards .card .card_title{
-    border-bottom: 1px solid #809faf;
+    border-bottom: 1px solid #272848;
     padding: 1rem;
-    background-color: #809faf;
+    background-color: #272848;
     border-top-left-radius: .6rem;
     border-top-right-radius: .6rem;
     font-weight: 500;
+    color: #fff;
 }
 .messages .cards .card .card_content p{
     margin-bottom: 1rem;
@@ -1108,7 +1117,7 @@ form .button:focus{
 .msgsbutton{
     background : none;
     border: none;
-    color: #809faf;
+    color: #272848;
     font-size: 102%;
     text-align: center;
     display: inline-block;
@@ -1118,6 +1127,22 @@ form .button:focus{
 }
 .msgsbutton:hover{
     text-decoration: underline;
+}
+
+.archive, .delete{
+    float: right;
+    display: inline;
+    margin-right : 1rem;
+}
+.archivebtn{
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    margin-top: .4rem;
+}
+.fa-archive, .fa-trash-alt{
+    font-size: 150%;
 }
 
 @media screen and (max-width:768px){

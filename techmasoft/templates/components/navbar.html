@@ -16,25 +16,25 @@
                 </div>
                 <ul class="nav_list">
                     <li class="nav_link">
-                        <a href="{% url 'homepage' %}" class="nav_item text_capitalize text_uppercase"><i class="fas fa-home"></i> ƏSAS SƏHİFƏ</a>
+                        <a href="{% url 'homepage' %}" class="nav_item text_capitalize text_uppercase"><i class="fas fa-home"></i> Əsas Səhifə</a>
                     </li>
                     <li class="nav_link">
-                        <a href="#services" class="nav_item text_capitalize"><i class="fas fa-sliders-h"></i> XİDMƏTLƏRİMİZ</a>
+                        <a href="#services" class="nav_item text_capitalize"><i class="fas fa-sliders-h"></i> Xidmətlərimiz</a>
                     </li>
                     {% if works %}
                     <li class="nav_link">
-                        <a href="#work" class="nav_item text_capitalize"><i class="fas fa-briefcase"></i> İŞLƏRİMİZ</a>
+                        <a href="#work" class="nav_item text_capitalize"><i class="fas fa-briefcase"></i> İşlərimiz</a>
                     </li>
                     {% endif %}
                     <li class="nav_link">
-                        <a href="#offers" class="nav_item text_capitalize"><i class="fas fa-envelope-open-text"></i> TƏKLİFLƏRİMİZ</a>
+                        <a href="#offers" class="nav_item text_capitalize"><i class="fas fa-envelope-open-text"></i> Təkliflərimiz</a>
                     </li>
                     <li class="nav_link">
-                        <a href="#form" class="nav_item text_capitalize"><i class="fas fa-id-card"></i> BİZİMLƏ ƏLAQƏ</a>
+                        <a href="#form" class="nav_item text_capitalize"><i class="fas fa-id-card"></i> Bizimlə Əlaqə</a>
                     </li>
                     {% if request.user.is_staff %}
                     <li class="nav_link admin">
-                        <a href="https://techmasoft.com/techad1000" target='_blank' class="nav_item text_capitalize"><i class="fas fa-user"></i> ADMİN</a>
+                        <a href="https://techmasoft.com/techad1000" target='_blank' class="nav_item text_capitalize"><i class="fas fa-user"></i> Admin</a>
                     </li>
                     <li class="nav_link envelope">
                         {% if contact_messages %}

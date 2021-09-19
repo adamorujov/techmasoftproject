@@ -4,6 +4,8 @@ from django.shortcuts import redirect
 class PageModel(models.Model):
     title = models.CharField(max_length=250, verbose_name='Səhifə başlığı')
     logo = models.ImageField(upload_to='images/', verbose_name='Loqo', blank=True, null=True)
+    page_keywords = models.TextField(blank=True, null=True, verbose_name="Açar sözlər")
+    page_description = models.TextField(blank=True, null=True, verbose_name="Təsvir")
     favicon = models.ImageField(upload_to='images/', verbose_name='İkon', blank=True, null=True)
     slogan = models.CharField(max_length=250, verbose_name='Sloqan', blank=True, null=True)
     banner_title = models.CharField(max_length=250, verbose_name='Banner başlığı')
