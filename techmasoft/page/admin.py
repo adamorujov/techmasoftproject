@@ -21,7 +21,7 @@ class PageAdmin(admin.ModelAdmin):
     fieldsets = (
         (
             'Səhifənin əsas elementləri', {
-                'fields' : ('title', 'logo', 'favicon', 'slogan')
+                'fields' : ('title', 'logo', 'favicon', 'slogan', 'page_keywords', 'page_description')
             }
         ),
         (
