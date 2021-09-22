@@ -371,6 +371,9 @@ header::after{
     .banner .container .content h1{
         font-size: 2.8rem;
     }
+    .menu_close{
+        font-size: 3.1rem;
+    }
 }
 @media screen and (max-width: 300px){
     .banner .container .content p{
