@@ -1105,11 +1105,13 @@ form .button:focus{
     color: #fff;
 }
 .messages .cards .card .card_content p{
-    margin-bottom: 1rem;
-    padding: 1rem 1rem;
+    padding: 0.5rem 1rem;
 }
 .messages .cards .card .card_content p:nth-child(even){
     background-color: #F5F7F8;
+}
+.messages .cards .card .card_content i{
+    padding: 0.5rem 1rem;
 }
 
 .messagesform{

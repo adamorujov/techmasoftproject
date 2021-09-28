@@ -115,6 +115,7 @@ class ContactModel(models.Model):
     country_code = models.CharField(max_length=8, default='+994', verbose_name='Ölkə kodu')
     telephone_number = models.CharField(max_length=15, verbose_name='Telefon nömrəsi')
     message = models.TextField(verbose_name='Mesaj')
+    message_date = models.DateTimeField(auto_now_add=True, null=True, blank=True, verbose_name='Göndərilmə tarixi')
     is_new = models.BooleanField(verbose_name='Yeni', default=True)
 
     class Meta:

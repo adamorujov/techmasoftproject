@@ -38,6 +38,7 @@
                         </div>
                     </div>
                     <div class="card_content_{{ message.id }} card_content">
+                        <i>{{ message.message_date }}</i>
                         <p class="email">
                             {{ message.email }} ({{ message.country_code }}){{ message.telephone_number }}
                         </p>
@@ -49,9 +50,6 @@
                 {% endfor %}
             </div>
             {% endif %}
-            <div class="send_btn">
-                <a class="msgsbutton" href="{% url 'homepage' %}">Əsas səhifəyə geri dön</a>
-            </div>
             {% if old_messages %}
             <div class="messages_title">
                 <h2>ƏVVƏLKİ MESAJLAR ({{ old_messages|length }})</h2>
@@ -71,6 +69,7 @@
                         </div>
                     </div>
                     <div class="card_content_{{ message.id }} card_content">
+                        <i>{{ message.message_date }}</i>
                         <p class="email">
                             {{ message.email }} +994{{ message.telephone_number }}
                         </p>
@@ -82,6 +81,9 @@
                 {% endfor %}
             </div>
             {% endif %}
+            <div class="send_btn">
+                <a class="msgsbutton" href="{% url 'homepage' %}">Əsas səhifəyə geri dön</a>
+            </div>
         </div>
     </div>
 </body>
