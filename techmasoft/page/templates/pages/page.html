@@ -124,7 +124,7 @@
             {% for suggestion in suggestions %}
             {% if suggestion.suggestion_direction == 'L' %}
             <div class="offers_1 offer">
-                <div class="offers_1_img offers_img" data-aos="fade-right">
+                <div class="offers_1_img offers_img">
                     <img src="{{ suggestion.image.url }}" alt="{{ suggestion.title }}">
                 </div>
                 <div class="offers_1_content offers_content" data-aos="fade-left">
@@ -138,7 +138,7 @@
                     <h3>{{ suggestion.title }}</h3>
                     <p>{{ suggestion.content|safe }}</p>
                 </div>
-                <div class="offers_2_img offers_img" data-aos="fade-left">
+                <div class="offers_2_img offers_img">
                     <img src="{{ suggestion.image.url }}" alt="{{ suggestion.title}}">
                 </div>
             </div>
