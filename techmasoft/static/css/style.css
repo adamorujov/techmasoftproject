@@ -184,9 +184,11 @@ header::after{
 }
 .logo_box a img{
     width: 20rem;
+    margin-top: .3rem;
 }
 .mobile_nav .mobile_logo a img{
     width: 20rem;
+    margin: .3rem 0 0 .3rem;
 }
 /* navbar end */
 

@@ -47,7 +47,9 @@
                     <ul>
                         <li><a href="{% url 'homepage' %}">Əsas Səhifə</a></li>
                         <li><a href="#services">Xidmətlərimiz</a></li>
+                        {% if works %}
                         <li><a href="#work">İşlərimiz</a></li>
+                        {% endif %}
                         <li><a href="#offers">Təkliflərimiz</a></li>
                         <li><a href="#form">Bizimlə Əlaqə</a></li>
                     </ul>
@@ -55,8 +57,6 @@
             </div>
         </div>
     </div>
-    
-    <hr style="width:85%; margin:auto;">
 
     <!-- copyright start -->
     <div class="copyright">
