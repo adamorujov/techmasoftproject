@@ -16,7 +16,7 @@ menuClose.addEventListener("click",function(){
 })
 
 window.addEventListener("load",function(){
-    document.querySelector(".page_loader").style.display="none";
+    AOS.init();
 })
 window.addEventListener("mouseup",function(e){
     if(e.target != menu){
