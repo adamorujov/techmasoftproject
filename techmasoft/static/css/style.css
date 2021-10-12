@@ -184,11 +184,11 @@ header::after{
 }
 .logo_box a img{
     width: 20rem;
-    margin-top: .3rem;
+    margin-top: .5rem;
 }
 .mobile_nav .mobile_logo a img{
     width: 20rem;
-    margin: .3rem 0 0 .3rem;
+    margin: .5rem 0 0 .5rem;
 }
 /* navbar end */
 
@@ -342,7 +342,9 @@ header::after{
         left: -300%;
         transition: all .5s ease-in-out;
     }
-    
+    .banner .container .content{
+        width: 90%;
+    }
 }
 @media screen and (max-width: 768px){
     .whatsapp-icon {

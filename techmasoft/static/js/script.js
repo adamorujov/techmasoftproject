@@ -15,9 +15,6 @@ menuClose.addEventListener("click",function(){
     menu.classList.remove("show")
 })
 
-window.addEventListener("load",function(){
-    AOS.init();
-})
 window.addEventListener("mouseup",function(e){
     if(e.target != menu){
         menu.classList.add("hide")
