@@ -29,6 +29,18 @@ class PageModel(models.Model):
             return redirect('homepage')
         return super().save(*args, **kwargs)
 
+class PageView(models.Model):
+    view_day = models.DateField(auto_now_add=True, verbose_name="Baxış tarixi")
+    view_month = models.IntegerField(default=0, verbose_name="Baxış ayı")
+    view_year = models.IntegerField(default=0, verbose_name="Baxış ili")
+
+    class Meta:
+        verbose_name = "Baxış"
+        verbose_name_plural = "Baxışlar"
+
+    def __str__(self):
+        return self.id
+
 class PageAccountsModel(models.Model):
     social_media = models.CharField(max_length=50, verbose_name='Sosial media')
     account_link = models.URLField(max_length=250, verbose_name='Hesab linkləri')

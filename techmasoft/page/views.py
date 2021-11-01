@@ -3,11 +3,14 @@ from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from page.models import PageModel, ServiceModel, PropertyModel, WorkModel, SuggestionModel, PurposeModel, ContactModel, TeamModel, CompanyModel, PageAccountsModel
-
+from page import models
+from datetime import date
 
 class PageView(View):
 
     def get(self, request):
+        models.PageView.objects.create(view_month=date.today().month, view_year=date.today().year)
+
         page = PageModel.objects.first()
         services = ServiceModel.objects.order_by('id')
         properties = PropertyModel.objects.order_by('id')
@@ -63,10 +66,18 @@ class MessagesListView(LoginRequiredMixin, View):
         old_messages = ContactModel.objects.order_by('-id').filter(is_new=False)
         page = PageModel.objects.first()
 
+        page_daily_view = models.PageView.objects.filter(view_day = date.today())
+        page_monthly_view = models.PageView.objects.filter(view_month = date.today().month, view_year=date.today().year)
+        page_yearly_view = models.PageView.objects.filter(view_year = date.today().year)
+
         context = {
             'new_messages' : new_messages,
             'old_messages' : old_messages,
             'page' : page,
+
+            'page_daily_view': page_daily_view,
+            'page_monthly_view': page_monthly_view,
+            'page_yearly_view': page_yearly_view,
         }
 
         return render(request, 'pages/messages.html', context)

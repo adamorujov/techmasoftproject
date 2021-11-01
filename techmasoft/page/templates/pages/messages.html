@@ -13,6 +13,27 @@
 </head>
 <body>
     <div class="container">
+        <div class="Pageview">
+            <div class="messages_title">
+                <h2>SƏHİFƏYƏ BAXIŞ</h2>
+            </div>
+            <table style="width:100%;">
+                <thead>
+                    <tr>
+                        <th style="width:34%">Gündəlik</th>
+                        <th style="width:33%">Aylıq</th>
+                        <th style="width:33%">İllik</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="text-align:center">{{ page_daily_view|length }}</td>
+                        <td style="text-align:center">{{ page_monthly_view|length }}</td>
+                        <td style="text-align:center">{{ page_yearly_view|length }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
         <div class="messages">
             {% if not new_messages and not old_messages %}
             <div class="messages_title">

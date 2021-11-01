@@ -156,14 +156,14 @@
                     <img src="{{ suggestion.image.url }}" alt="{{ suggestion.title }}">
                 </div>
                 <div class="offers_1_content offers_content" data-aos="fade-left">
-                    <h3>{{ suggestion.title }}</h3>
+                    <h3>{{ suggestion.title|safe }}</h3>
                     <p>{{ suggestion.content|safe }}</p>
                 </div>
             </div>
             {% else %}
             <div class="offers_2 offer">
                 <div class="offers_2_content offers_content" data-aos="fade-right">
-                    <h3>{{ suggestion.title }}</h3>
+                    <h3>{{ suggestion.title|safe }}</h3>
                     <p>{{ suggestion.content|safe }}</p>
                 </div>
                 <div class="offers_2_img offers_img">
