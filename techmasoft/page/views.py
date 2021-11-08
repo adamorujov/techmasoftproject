@@ -67,7 +67,6 @@ class MessagesListView(LoginRequiredMixin, View):
 
         date_value = request.GET.get('date')
         date_value = datetime.strptime(date_value, "%Y-%m-%d").date()
-        print(date_value.month)
 
         new_messages = ContactModel.objects.order_by('-id').filter(is_new=True)
         old_messages = ContactModel.objects.order_by('-id').filter(is_new=False)
