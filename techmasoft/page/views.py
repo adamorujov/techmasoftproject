@@ -66,13 +66,13 @@ class MessagesListView(LoginRequiredMixin, View):
     def get(self, request):
 
         date_value = request.GET.get('date')
-        date_value = datetime.strptime(date_value, "%Y-%m-%d").date()
 
         new_messages = ContactModel.objects.order_by('-id').filter(is_new=True)
         old_messages = ContactModel.objects.order_by('-id').filter(is_new=False)
         page = PageModel.objects.first()
 
         if date_value:
+            date_value = datetime.strptime(date_value, "%Y-%m-%d").date()
             page_daily_view = models.PageView.objects.filter(view_day = date_value)
             page_monthly_view = models.PageView.objects.filter(view_month = date_value.month, view_year=date_value.year)
             page_yearly_view = models.PageView.objects.filter(view_year = date_value.year)
