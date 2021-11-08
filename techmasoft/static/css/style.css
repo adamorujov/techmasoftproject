@@ -1123,6 +1123,25 @@ form .button:focus{
     margin-bottom:2rem;
     width:40%;
 }
+.dateform{
+    margin:auto;
+    margin-bottom:2rem;
+    width:100%;
+}
+.dateinput{
+    text-align: center;
+    font-size: 102%;
+}
+.inputarea{
+    display: block;
+    text-align: center;
+}
+.datebutton{
+    background:none;
+    border:none;
+    font-size: 102%;
+    margin-left: 0.5%;
+}
 .msgsbutton{
     background : none;
     border: none;

@@ -5,11 +5,13 @@ from django.contrib import messages
 from page.models import PageModel, ServiceModel, PropertyModel, WorkModel, SuggestionModel, PurposeModel, ContactModel, TeamModel, CompanyModel, PageAccountsModel
 from page import models
 from datetime import date
+from datetime import datetime
 
 class PageView(View):
 
     def get(self, request):
-        models.PageView.objects.create(view_month=date.today().month, view_year=date.today().year)
+        if not self.request.user.is_staff:
+            models.PageView.objects.create(view_month=date.today().month, view_year=date.today().year)
 
         page = PageModel.objects.first()
         services = ServiceModel.objects.order_by('id')
@@ -62,19 +64,32 @@ class MessagesListView(LoginRequiredMixin, View):
     login_url = '/'
     
     def get(self, request):
+
+        date_value = request.GET.get('date')
+        date_value = datetime.strptime(date_value, "%Y-%m-%d").date()
+        print(date_value.month)
+
         new_messages = ContactModel.objects.order_by('-id').filter(is_new=True)
         old_messages = ContactModel.objects.order_by('-id').filter(is_new=False)
         page = PageModel.objects.first()
 
-        page_daily_view = models.PageView.objects.filter(view_day = date.today())
-        page_monthly_view = models.PageView.objects.filter(view_month = date.today().month, view_year=date.today().year)
-        page_yearly_view = models.PageView.objects.filter(view_year = date.today().year)
+        if date_value:
+            page_daily_view = models.PageView.objects.filter(view_day = date_value)
+            page_monthly_view = models.PageView.objects.filter(view_month = date_value.month, view_year=date_value.year)
+            page_yearly_view = models.PageView.objects.filter(view_year = date_value.year)
+            default_date = date_value.strftime("%Y-%m-%d")
+        else:
+            page_daily_view = models.PageView.objects.filter(view_day = date.today())
+            page_monthly_view = models.PageView.objects.filter(view_month = date.today().month, view_year=date.today().year)
+            page_yearly_view = models.PageView.objects.filter(view_year = date.today().year)
+            default_date = date.today().strftime("%Y-%m-%d")
 
         context = {
             'new_messages' : new_messages,
             'old_messages' : old_messages,
             'page' : page,
 
+            'default_date': default_date,
             'page_daily_view': page_daily_view,
             'page_monthly_view': page_monthly_view,
             'page_yearly_view': page_yearly_view,
